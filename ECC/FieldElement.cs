@@ -82,5 +82,23 @@ namespace ECC
                 return null;
             }
         }
+
+        public static FieldElement operator -(FieldElement f1, FieldElement f2)
+        {
+            try
+            {
+                if (f1.Prime != f2.Prime)
+                {
+                    throw new Exception("Cannot subtract two numbers in different Fields");
+                }
+                BigInteger num = Mod(f1.Num - f2.Num, f1.Prime);
+                return new FieldElement(num, f1.Prime);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
     }
 }
