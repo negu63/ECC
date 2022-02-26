@@ -43,5 +43,10 @@ namespace ECC
             }
             return this.Num == other.Num && this.Prime == other.Prime;
         }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as FieldElement);
+        }
     }
 }
