@@ -34,5 +34,14 @@ namespace ECC
         {
             return HashCode.Combine(Num, Prime);
         }
+
+        public bool Equals(FieldElement other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            return this.Num == other.Num && this.Prime == other.Prime;
+        }
     }
 }
