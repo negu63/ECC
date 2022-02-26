@@ -48,5 +48,15 @@ namespace ECC
         {
             return this.Equals(obj as FieldElement);
         }
+
+        public static bool operator ==(FieldElement f1, FieldElement f2)
+        {
+            return Equals(f1, f2);
+        }
+
+        public static bool operator !=(FieldElement f1, FieldElement f2)
+        {
+            return !Equals(f1, f2);
+        }
     }
 }
