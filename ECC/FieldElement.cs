@@ -118,5 +118,12 @@ namespace ECC
                 return null;
             }
         }
+
+        public FieldElement Pow(BigInteger e)
+        {
+            BigInteger n = Mod(e, this.Prime - 1);
+            BigInteger num = BigInteger.ModPow(this.Num, n, this.Prime);
+            return new FieldElement(num, this.Prime);
+        }
     }
 }
