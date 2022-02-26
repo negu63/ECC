@@ -29,5 +29,10 @@ namespace ECC
         {
             return $"FieldElement_{Prime}({Num})";
         }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Num, Prime);
+        }
     }
 }
