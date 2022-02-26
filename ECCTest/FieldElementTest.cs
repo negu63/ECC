@@ -96,5 +96,25 @@ namespace ECCTest
                 Assert.IsFalse(areEqual);
             }
         }
+
+        [TestMethod]
+        [DataRow("2", "2")]
+        [DataRow("2", "15")]
+        public void NotEqualOperator_ReturnsTrueOnlyIfTheyAreEqual(string num1, string num2)
+        {
+            FieldElement f1 = new(BigInteger.Parse(num1), 31);
+            FieldElement f2 = new(BigInteger.Parse(num2), 31);
+
+            bool areNotEqual = f1 != f2;
+
+            if (num1 != num2)
+            {
+                Assert.IsTrue(areNotEqual);
+            }
+            else
+            {
+                Assert.IsFalse(areNotEqual);
+            }
+        }
     }
 }
