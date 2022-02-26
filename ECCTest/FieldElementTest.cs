@@ -82,5 +82,18 @@ namespace ECCTest
 
             Assert.AreEqual(areNotEqual, expect);
         }
+
+        [TestMethod]
+        [DataRow("2", "15", "17")]
+        [DataRow("17", "21", "7")]
+        public void Add_FieldElement(string num1, string num2, string expect)
+        {
+            FieldElement f1 = new(BigInteger.Parse(num1), prime);
+            FieldElement f2 = new(BigInteger.Parse(num2), prime);
+
+            FieldElement sum = f1 + f2;
+
+            Assert.AreEqual(sum, new FieldElement(BigInteger.Parse(expect), prime));
+        }
     }
 }
