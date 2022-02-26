@@ -18,103 +18,68 @@ namespace ECCTest
         }
 
         [TestMethod]
-        [DataRow("2", "2")]
-        [DataRow("2", "15")]
-        public void GetHashCode_ReturnsCorrectHashCode(string num1, string num2)
+        [DataRow("2", "2", true)]
+        [DataRow("2", "15", false)]
+        public void GetHashCode_ReturnsCorrectHashCode(string num1, string num2, bool expect)
         {
             FieldElement f1 = new(BigInteger.Parse(num1), prime);
             FieldElement f2 = new(BigInteger.Parse(num2), prime);
 
             bool isSameHashCode = f1.GetHashCode() == f2.GetHashCode();
 
-            if (num1 == num2)
-            {
-                Assert.IsTrue(isSameHashCode);
-            }
-            else
-            {
-                Assert.IsFalse(isSameHashCode);
-            }
+            Assert.AreEqual(isSameHashCode, expect);
         }
 
         [TestMethod]
-        [DataRow("2", "2")]
-        [DataRow("2", "15")]
-        public void Equals_ReturnsTrueOnlyIfTheyAreEqual(string num1, string num2)
+        [DataRow("2", "2", true)]
+        [DataRow("2", "15", false)]
+        public void Equals_ReturnsTrueOnlyIfTheyAreEqual(string num1, string num2, bool expect)
         {
             FieldElement f1 = new(BigInteger.Parse(num1), prime);
             FieldElement f2 = new(BigInteger.Parse(num2), prime);
 
             bool areEqual = f1.Equals(f2);
 
-            if (num1 == num2)
-            {
-                Assert.IsTrue(areEqual);
-            }
-            else
-            {
-                Assert.IsFalse(areEqual);
-            }
+            Assert.AreEqual(areEqual, expect);
         }
 
         [TestMethod]
-        [DataRow("2", "2")]
-        [DataRow("2", "15")]
-        public void OverrideEquals_ReturnsTrueOnlyIfTheyAreEqual(string num1, string num2)
+        [DataRow("2", "2", true)]
+        [DataRow("2", "15", false)]
+        public void OverrideEquals_ReturnsTrueOnlyIfTheyAreEqual(string num1, string num2, bool expect)
         {
             FieldElement f1 = new(BigInteger.Parse(num1), prime);
             object f2 = new FieldElement(BigInteger.Parse(num2), prime);
 
             bool areEqual = f1.Equals(f2);
 
-            if (num1 == num2)
-            {
-                Assert.IsTrue(areEqual);
-            }
-            else
-            {
-                Assert.IsFalse(areEqual);
-            }
+            Assert.AreEqual(areEqual, expect);
         }
 
         [TestMethod]
-        [DataRow("2", "2")]
-        [DataRow("2", "15")]
-        public void EqualOperator_ReturnsTrueOnlyIfTheyAreEqual(string num1, string num2)
+        [DataRow("2", "2", true)]
+        [DataRow("2", "15", false)]
+        public void EqualOperator_ReturnsTrueOnlyIfTheyAreEqual(string num1, string num2, bool expect)
         {
             FieldElement f1 = new(BigInteger.Parse(num1), 31);
             FieldElement f2 = new(BigInteger.Parse(num2), 31);
 
             bool areEqual = f1 == f2;
 
-            if (num1 == num2)
-            {
-                Assert.IsTrue(areEqual);
-            }
-            else
-            {
-                Assert.IsFalse(areEqual);
-            }
+            Assert.AreEqual(areEqual, expect);
         }
 
         [TestMethod]
-        [DataRow("2", "2")]
-        [DataRow("2", "15")]
-        public void NotEqualOperator_ReturnsTrueOnlyIfTheyAreEqual(string num1, string num2)
+        [DataRow("2", "2", false)]
+        [DataRow("2", "15", true)]
+        public void NotEqualOperator_ReturnsTrueOnlyIfTheyAreEqual(string num1, string num2, bool expect)
         {
             FieldElement f1 = new(BigInteger.Parse(num1), 31);
             FieldElement f2 = new(BigInteger.Parse(num2), 31);
 
             bool areNotEqual = f1 != f2;
 
-            if (num1 != num2)
-            {
-                Assert.IsTrue(areNotEqual);
-            }
-            else
-            {
-                Assert.IsFalse(areNotEqual);
-            }
+            Assert.AreEqual(areNotEqual, expect);
         }
     }
 }
