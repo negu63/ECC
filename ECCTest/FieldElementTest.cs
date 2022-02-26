@@ -10,11 +10,12 @@ namespace ECCTest
         readonly BigInteger prime = 31;
 
         [TestMethod]
-        public void ToString_ReturnsFormattedString()
+        [DataRow("2")]
+        public void ToString_ReturnsFormattedString(string num)
         {
-            FieldElement f1 = new(2, prime);
+            FieldElement f1 = new(BigInteger.Parse(num), prime);
 
-            Assert.IsTrue(f1.ToString() == "FieldElement_31(2)");
+            Assert.IsTrue(f1.ToString() == $"FieldElement_{prime}({BigInteger.Parse(num)})");
         }
 
         [TestMethod]
