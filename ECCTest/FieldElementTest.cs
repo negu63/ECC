@@ -121,5 +121,19 @@ namespace ECCTest
 
             Assert.AreEqual(mul, new FieldElement(BigInteger.Parse(expect), prime));
         }
+
+        [TestMethod]
+        [DataRow("17", "3", "15")]
+        [DataRow("5", "5", "25")]
+        [DataRow("17", "-3", "29")]
+        [DataRow("11", "-4", "7")]
+        public void Pow_FieldElement(string num1, string exponent, string expect)
+        {
+            FieldElement f1 = new(BigInteger.Parse(num1), prime);
+
+            FieldElement result = f1.Pow(BigInteger.Parse(exponent));
+
+            Assert.AreEqual(result, new FieldElement(BigInteger.Parse(expect), prime));
+        }
     }
 }
