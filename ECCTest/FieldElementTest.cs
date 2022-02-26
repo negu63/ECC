@@ -56,5 +56,25 @@ namespace ECCTest
                 Assert.IsFalse(areEqual);
             }
         }
+
+        [TestMethod]
+        [DataRow("2", "2")]
+        [DataRow("2", "15")]
+        public void OverrideEquals_ReturnsTrueOnlyIfTheyAreEqual(string num1, string num2)
+        {
+            FieldElement f1 = new(BigInteger.Parse(num1), prime);
+            object f2 = new FieldElement(BigInteger.Parse(num2), prime);
+
+            bool areEqual = f1.Equals(f2);
+
+            if (num1 == num2)
+            {
+                Assert.IsTrue(areEqual);
+            }
+            else
+            {
+                Assert.IsFalse(areEqual);
+            }
+        }
     }
 }
