@@ -58,5 +58,10 @@ namespace ECC
         {
             return !Equals(f1, f2);
         }
+        
+        private static BigInteger Mod(BigInteger x, BigInteger m)
+        {
+            return (x % m + m) % m;
+        }
     }
 }
