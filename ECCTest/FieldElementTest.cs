@@ -7,8 +7,11 @@ namespace ECCTest
     public class FieldElementTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ToString_ReturnsFormattedString()
         {
+            FieldElement f1 = new(2, 31);
+
+            Assert.IsTrue(f1.ToString() == "FieldElement_31(2)");
         }
     }
 }
