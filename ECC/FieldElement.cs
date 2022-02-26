@@ -58,7 +58,7 @@ namespace ECC
         {
             return !Equals(f1, f2);
         }
-        
+
         private static BigInteger Mod(BigInteger x, BigInteger m)
         {
             return (x % m + m) % m;
@@ -124,6 +124,24 @@ namespace ECC
             BigInteger n = Mod(e, this.Prime - 1);
             BigInteger num = BigInteger.ModPow(this.Num, n, this.Prime);
             return new FieldElement(num, this.Prime);
+        }
+
+        public static FieldElement operator /(FieldElement f1, FieldElement f2)
+        {
+            try
+            {
+                if (f1.Prime != f2.Prime)
+                {
+                    throw new Exception("Cannot divide two numbers in different Fields");
+                }
+                BigInteger num = Mod(f1.Num * BigInteger.ModPow(f2.Num, f1.Prime - 2, f1.Prime), f1.Prime);
+                return new FieldElement(num, f1.Prime);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
         }
     }
 }
