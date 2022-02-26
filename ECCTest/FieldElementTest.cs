@@ -61,8 +61,8 @@ namespace ECCTest
         [DataRow("2", "15", false)]
         public void EqualOperator_ReturnsTrueOnlyIfTheyAreEqual(string num1, string num2, bool expect)
         {
-            FieldElement f1 = new(BigInteger.Parse(num1), 31);
-            FieldElement f2 = new(BigInteger.Parse(num2), 31);
+            FieldElement f1 = new(BigInteger.Parse(num1), prime);
+            FieldElement f2 = new(BigInteger.Parse(num2), prime);
 
             bool areEqual = f1 == f2;
 
@@ -74,8 +74,8 @@ namespace ECCTest
         [DataRow("2", "15", true)]
         public void NotEqualOperator_ReturnsTrueOnlyIfTheyAreEqual(string num1, string num2, bool expect)
         {
-            FieldElement f1 = new(BigInteger.Parse(num1), 31);
-            FieldElement f2 = new(BigInteger.Parse(num2), 31);
+            FieldElement f1 = new(BigInteger.Parse(num1), prime);
+            FieldElement f2 = new(BigInteger.Parse(num2), prime);
 
             bool areNotEqual = f1 != f2;
 
