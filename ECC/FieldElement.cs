@@ -24,5 +24,10 @@ namespace ECC
                 Console.WriteLine(e.Message);
             }
         }
+
+        public override string ToString()
+        {
+            return $"FieldElement_{Prime}({Num})";
+        }
     }
 }
