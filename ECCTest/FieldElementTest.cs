@@ -135,5 +135,18 @@ namespace ECCTest
 
             Assert.AreEqual(result, new FieldElement(BigInteger.Parse(expect), prime));
         }
+
+        [TestMethod]
+        [DataRow("3", "24", "4")]
+        [DataRow("17", "5", "22")]
+        public void Div_FieldElement(string num1, string num2, string expect)
+        {
+            FieldElement f1 = new(BigInteger.Parse(num1), prime);
+            FieldElement f2 = new(BigInteger.Parse(num2), prime);
+
+            FieldElement result = f1 / f2;
+
+            Assert.AreEqual(result, new FieldElement(BigInteger.Parse(expect), prime));
+        }
     }
 }
