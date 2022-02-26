@@ -86,40 +86,43 @@ namespace ECCTest
         [TestMethod]
         [DataRow("2", "15", "17")]
         [DataRow("17", "21", "7")]
-        public void Add_FieldElement(string num1, string num2, string expect)
+        public void Add_FieldElement(string num1, string num2, string expectResult)
         {
             FieldElement f1 = new(BigInteger.Parse(num1), prime);
             FieldElement f2 = new(BigInteger.Parse(num2), prime);
 
-            FieldElement sum = f1 + f2;
+            FieldElement result = f1 + f2;
+            FieldElement expect = new(BigInteger.Parse(expectResult), prime);
 
-            Assert.AreEqual(sum, new FieldElement(BigInteger.Parse(expect), prime));
+            Assert.AreEqual(result, expect);
         }
 
         [TestMethod]
         [DataRow("29", "4", "25")]
         [DataRow("15", "30", "16")]
-        public void Sub_FieldElement(string num1, string num2, string expect)
+        public void Sub_FieldElement(string num1, string num2, string expectResult)
         {
             FieldElement f1 = new(BigInteger.Parse(num1), prime);
             FieldElement f2 = new(BigInteger.Parse(num2), prime);
 
-            FieldElement sub = f1 - f2;
+            FieldElement result = f1 - f2;
+            FieldElement expect = new(BigInteger.Parse(expectResult), prime);
 
-            Assert.AreEqual(sub, new FieldElement(BigInteger.Parse(expect), prime));
+            Assert.AreEqual(result, expect);
         }
 
         [TestMethod]
         [DataRow("2", "15", "30")]
         [DataRow("24", "19", "22")]
-        public void Mul_FieldElement(string num1, string num2, string expect)
+        public void Mul_FieldElement(string num1, string num2, string expectResult)
         {
             FieldElement f1 = new(BigInteger.Parse(num1), prime);
             FieldElement f2 = new(BigInteger.Parse(num2), prime);
 
-            FieldElement mul = f1 * f2;
+            FieldElement result = f1 * f2;
+            FieldElement expect = new(BigInteger.Parse(expectResult), prime);
 
-            Assert.AreEqual(mul, new FieldElement(BigInteger.Parse(expect), prime));
+            Assert.AreEqual(result, expect);
         }
 
         [TestMethod]
@@ -127,26 +130,28 @@ namespace ECCTest
         [DataRow("5", "5", "25")]
         [DataRow("17", "-3", "29")]
         [DataRow("11", "-4", "7")]
-        public void Pow_FieldElement(string num1, string exponent, string expect)
+        public void Pow_FieldElement(string num1, string exponent, string expectResult)
         {
             FieldElement f1 = new(BigInteger.Parse(num1), prime);
 
             FieldElement result = f1.Pow(BigInteger.Parse(exponent));
+            FieldElement expect = new(BigInteger.Parse(expectResult), prime);
 
-            Assert.AreEqual(result, new FieldElement(BigInteger.Parse(expect), prime));
+            Assert.AreEqual(result, expect);
         }
 
         [TestMethod]
         [DataRow("3", "24", "4")]
         [DataRow("17", "5", "22")]
-        public void Div_FieldElement(string num1, string num2, string expect)
+        public void Div_FieldElement(string num1, string num2, string expectResult)
         {
             FieldElement f1 = new(BigInteger.Parse(num1), prime);
             FieldElement f2 = new(BigInteger.Parse(num2), prime);
 
             FieldElement result = f1 / f2;
+            FieldElement expect = new(BigInteger.Parse(expectResult), prime);
 
-            Assert.AreEqual(result, new FieldElement(BigInteger.Parse(expect), prime));
+            Assert.AreEqual(result, expect);
         }
     }
 }
