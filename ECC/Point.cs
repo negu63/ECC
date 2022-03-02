@@ -33,5 +33,10 @@ namespace ECC
             }
 
         }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y, A, B);
+        }
     }
 }
