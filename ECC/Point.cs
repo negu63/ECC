@@ -99,5 +99,24 @@ namespace ECC
             }
             return HashCode.Combine(X, Y, A, B);
         }
+
+        public bool Equals(Point other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            return X == other.X && Y == other.Y && A == other.A && B == other.B;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            return Equals(obj as Point);
+        }
     }
 }
