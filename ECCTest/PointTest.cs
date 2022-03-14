@@ -11,7 +11,9 @@ namespace ECCTest
         [DynamicData(nameof(GetHashCodeInput))]
         public void GetHashCode_ReturnsCorrectHashCode(bool expected, Point[] points)
         {
-            Assert.AreEqual(expected, points[0].GetHashCode() == points[1].GetHashCode());
+            bool actual = points[0].GetHashCode() == points[1].GetHashCode();
+
+            Assert.AreEqual(expected, actual);
         }
 
         public static IEnumerable<object[]> GetHashCodeInput
@@ -36,7 +38,9 @@ namespace ECCTest
         [DynamicData(nameof(ToStringInput))]
         public void ToString_ReturnsFormattedString(string expected, Point point)
         {
-            Assert.AreEqual(expected, point.ToString());
+            string actual = point.ToString();
+
+            Assert.AreEqual(expected, actual);
         }
 
         public static IEnumerable<object[]> ToStringInput
@@ -57,34 +61,36 @@ namespace ECCTest
         [DynamicData(nameof(EqualsInput))]
         public void Equals_ReturnsTrueOnlyIfTheyAreEqual(bool expected, Point[] points)
         {
-            Assert.AreEqual(expected, points[0].Equals(points[1]));
+            bool actual = points[0].Equals(points[1]);
+            
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         [DynamicData(nameof(EqualsInput))]
         public void OverrideEquals_ReturnsTrueOnlyIfTheyAreEqual(bool expected, object[] points)
         {
-            bool result = ((Point)points[0]).Equals(points[1]);
+            bool actual = ((Point)points[0]).Equals(points[1]);
 
-            Assert.AreEqual(expected, result);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         [DynamicData(nameof(EqualsInput))]
         public void EqualOperator_ReturnsTrueOnlyIfTheyAreEqual(bool expected, Point[] points)
         {
-            bool result = points[0] == points[1];
+            bool actual = points[0] == points[1];
 
-            Assert.AreEqual(expected, result);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         [DynamicData(nameof(EqualsInput))]
         public void NotEqualOperator_ReturnsTrueOnlyIfTheyAreNotEqual(bool expected, Point[] points)
         {
-            bool result = points[0] != points[1];
+            bool actual = points[0] != points[1];
 
-            Assert.AreEqual(!expected, result);
+            Assert.AreEqual(!expected, actual);
         }
 
         public static IEnumerable<object[]> EqualsInput
