@@ -118,5 +118,15 @@ namespace ECC
 
             return Equals(obj as Point);
         }
+
+        public static bool operator ==(Point p1, Point p2)
+        {
+            return Equals(p1, p2);
+        }
+
+        public static bool operator !=(Point p1, Point p2)
+        {
+            return !Equals(p1, p2);
+        }
     }
 }
