@@ -77,6 +77,10 @@ namespace ECC
 
         public override int GetHashCode()
         {
+            if(X == null || Y == null)
+            {
+                return HashCode.Combine(0, 0, A, B);
+            }
             return HashCode.Combine(X, Y, A, B);
         }
     }
