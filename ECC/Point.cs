@@ -9,10 +9,10 @@ namespace ECC
 {
     public class Point
     {
-        public BigInteger X { get; private set; }
-        public BigInteger Y { get; private set; }
-        public BigInteger A { get; private set; }
-        public BigInteger B { get; private set; }
+        public dynamic X { get; private set; }
+        public dynamic Y { get; private set; }
+        public dynamic A { get; private set; }
+        public dynamic B { get; private set; }
 
         public Point(BigInteger x, BigInteger y, BigInteger a, BigInteger b)
         {
@@ -22,14 +22,15 @@ namespace ECC
                 Y = y;
                 A = a;
                 B = b;
-                if (BigInteger.Pow(Y, 2) != (BigInteger.Pow(X, 3) + a * x + b))
+
+                if (BigInteger.Pow(Y, 2) != (BigInteger.Pow(X, 3) + A * X + B))
                 {
                     throw new Exception($"({X}, {Y}) is not on the curve");
                 }
             }
             catch (Exception e)
             {
-                Console.Write(e.Message);
+                Console.WriteLine(e.Message);
             }
 
         }
