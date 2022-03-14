@@ -62,7 +62,7 @@ namespace ECCTest
         public void Equals_ReturnsTrueOnlyIfTheyAreEqual(bool expected, Point[] points)
         {
             bool actual = points[0].Equals(points[1]);
-            
+
             Assert.AreEqual(expected, actual);
         }
 
@@ -100,6 +100,32 @@ namespace ECCTest
                 return new[] {
                     new object[] { true, new Point[] { new Point(3, -7, 5, 7), new Point(3, -7, 5, 7) } },
                     new object[] { false, new Point[] { new Point(3, -7, 5, 7), new Point(18, 77, 5, 7) } },
+                };
+            }
+        }
+
+        [TestMethod]
+        [DynamicData(nameof(AddInput))]
+        public void Add_Point(Point expected, Point[] points)
+        {
+            Point actual = points[0] + points[1];
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        public static IEnumerable<object[]> AddInput
+        {
+            get
+            {
+                Point p1 = new((object)null, null, 5, 7);
+                Point p2 = new(2, 5, 5, 7);
+                Point p3 = new(2, -5, 5, 7);
+
+                return new[]
+                {
+                    new object[] { p2, new Point[] { p1, p2 } },
+                    new object[] { p2, new Point[] { p2, p1 } },
+                    new object[] { p1, new Point[] { p2, p3 } }
                 };
             }
         }
