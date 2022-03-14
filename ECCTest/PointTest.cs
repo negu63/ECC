@@ -144,12 +144,19 @@ namespace ECCTest
                 Point p1 = new((object)null, null, a, b);
                 Point p2 = new(2, 5, a, b);
                 Point p3 = new(2, -5, a, b);
+                Point p4 = new(3, 7, a, b);
+                Point p5 = new(-1, -1, a, b);
+                Point p6 = new(2, -5, a, b);
+                Point p7 = new(-1, 1, a, b);
+                Point p8 = new(18, -77, a, b);
 
                 return new[]
                 {
                     new object[] { p2, new Point[] { p1, p2 } },
                     new object[] { p2, new Point[] { p2, p1 } },
-                    new object[] { p1, new Point[] { p2, p3 } }
+                    new object[] { p1, new Point[] { p2, p3 } },
+                    new object[] { p6, new Point[] { p4, p5 } },
+                    new object[] { p8, new Point[] { p7, p7 } }
                 };
             }
         }
