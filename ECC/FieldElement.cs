@@ -16,8 +16,8 @@ namespace ECC
                 {
                     throw new Exception($"Num {num} not in field range 0 to {prime - 1}");
                 }
-                this.Num = num;
-                this.Prime = prime;
+                Num = num;
+                Prime = prime;
             }
             catch (Exception e)
             {
@@ -41,7 +41,7 @@ namespace ECC
             {
                 return false;
             }
-            return this.Num == other.Num && this.Prime == other.Prime;
+            return Num == other.Num && Prime == other.Prime;
         }
 
         public override bool Equals(object obj)
@@ -50,7 +50,7 @@ namespace ECC
             {
                 return false;
             }
-            return this.Equals(obj as FieldElement);
+            return Equals(obj as FieldElement);
         }
 
         public static bool operator ==(FieldElement f1, FieldElement f2)
@@ -125,9 +125,9 @@ namespace ECC
 
         public FieldElement Pow(BigInteger e)
         {
-            BigInteger n = Mod(e, this.Prime - 1);
-            BigInteger num = BigInteger.ModPow(this.Num, n, this.Prime);
-            return new FieldElement(num, this.Prime);
+            BigInteger n = Mod(e, Prime - 1);
+            BigInteger num = BigInteger.ModPow(Num, n, Prime);
+            return new FieldElement(num, Prime);
         }
 
         public static FieldElement operator /(FieldElement f1, FieldElement f2)
