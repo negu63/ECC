@@ -31,5 +31,26 @@ namespace ECCTest
                 };
             }
         }
+
+        [TestMethod]
+        [DynamicData(nameof(ToStringInput))]
+        public void ToString_ReturnsFormattedString(string expected, Point point)
+        {
+            Assert.AreEqual(expected, point.ToString());
+        }
+
+        public static IEnumerable<object[]> ToStringInput
+        {
+            get
+            {
+                return new[] {
+                    new object[] { "Point(infinity)", new Point(null, null, 5, 7) },
+                    new object[] { 
+                        "Point(192, 105)_0_7 FieldElement(223)", 
+                        new Point(new FieldElement(192, 223), new FieldElement(105, 223), new FieldElement(0, 223), new FieldElement(7, 223)) },
+                    new object[] { "Point(3, -7)_5_7", new Point(3, -7, 5, 7) }
+                };
+            }
+        }
     }
 }
