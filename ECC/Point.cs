@@ -55,6 +55,26 @@ namespace ECC
             }
         }
 
+        public Point(dynamic x, dynamic y, dynamic a, dynamic b)
+        {
+            try
+            {
+                X = x;
+                Y = y;
+                A = a;
+                B = b;
+
+                if (X != null && Y != null)
+                {
+                    throw new Exception($"({X}, {Y}) is not on the curve");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
         public override int GetHashCode()
         {
             return HashCode.Combine(X, Y, A, B);
