@@ -60,7 +60,6 @@ namespace ECCTest
             Assert.AreEqual(expected, points[0].Equals(points[1]));
         }
 
-
         [TestMethod]
         [DynamicData(nameof(EqualsInput))]
         public void OverrideEquals_ReturnsTrueOnlyIfTheyAreEqual(bool expected, object[] points)
@@ -68,6 +67,24 @@ namespace ECCTest
             bool result = ((Point)points[0]).Equals(points[1]);
 
             Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        [DynamicData(nameof(EqualsInput))]
+        public void EqualOperator_ReturnsTrueOnlyIfTheyAreEqual(bool expected, Point[] points)
+        {
+            bool result = points[0] == points[1];
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        [DynamicData(nameof(EqualsInput))]
+        public void NotEqualOperator_ReturnsTrueOnlyIfTheyAreNotEqual(bool expected, Point[] points)
+        {
+            bool result = points[0] != points[1];
+
+            Assert.AreEqual(!expected, result);
         }
 
         public static IEnumerable<object[]> EqualsInput
