@@ -73,7 +73,7 @@ namespace ECCTest
         [TestMethod]
         [DataRow("2", "2", false)]
         [DataRow("2", "15", true)]
-        public void NotEqualOperator_ReturnsTrueOnlyIfTheyAreEqual(string num1, string num2, bool expect)
+        public void NotEqualOperator_ReturnsTrueOnlyIfTheyAreNotEqual(string num1, string num2, bool expect)
         {
             FieldElement f1 = new(BigInteger.Parse(num1), prime);
             FieldElement f2 = new(BigInteger.Parse(num2), prime);
