@@ -75,9 +75,25 @@ namespace ECC
             }
         }
 
+        public override string ToString()
+        {
+            if (X == null)
+            {
+                return $"Point(infinity)";
+            }
+            else if (X.GetType() == typeof(FieldElement))
+            {
+                return $"Point({X.Num}, {Y.Num})_{A.Num}_{B.Num} FieldElement({X.Prime})";
+            }
+            else
+            {
+                return $"Point({X}, {Y})_{A}_{B}";
+            }
+        }
+
         public override int GetHashCode()
         {
-            if(X == null || Y == null)
+            if (X == null || Y == null)
             {
                 return HashCode.Combine(0, 0, A, B);
             }
