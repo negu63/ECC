@@ -5,8 +5,8 @@ namespace ECC
 {
     public class FieldElement
     {
-        private BigInteger Num { get; set; }
-        private BigInteger Prime { get; set; }
+        public BigInteger Num { get; private set; }
+        public BigInteger Prime { get; private set; }
 
         public FieldElement(BigInteger num, BigInteger prime)
         {
