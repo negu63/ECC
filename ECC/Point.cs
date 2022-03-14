@@ -35,6 +35,26 @@ namespace ECC
 
         }
 
+        public Point(FieldElement x, FieldElement y, FieldElement a, FieldElement b)
+        {
+            try
+            {
+                X = x;
+                Y = y;
+                A = a;
+                B = b;
+
+                if (Y.Pow(2) != X.Pow(3) + A * X + B)
+                {
+                    throw new Exception($"({X.ToString()}, {Y.ToString()}) is not on the curve");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
         public override int GetHashCode()
         {
             return HashCode.Combine(X, Y, A, B);
